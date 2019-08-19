@@ -1,0 +1,2 @@
+insert into customer (Name,Address,Country,Phone) VALUES('Barney Rubble','222 Future Way','USA','1234567451');
+insert into customer (Name,Address,Country,Phone) VALUES('George Jetson','222 Future Way','USA','1234567451');

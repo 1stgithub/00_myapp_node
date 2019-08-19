@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+    node:
+        image: "1stdocker/00_myapp_node"
+        restart: "always"
+        ports:
+            - "8080:8080"
+        expose:
+            - "8080"
+        network_mode: "bridge"

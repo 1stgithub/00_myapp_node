@@ -1,0 +1,29 @@
+# Derived from official mysql image (our base image)
+FROM mysql
+
+
+# Add a database
+ENV MYSQL_DATABASE test
+
+
+# Add the content of the sql-scripts/ directory to your image
+# All scripts in docker-entrypoint-initdb.d/ are automatically
+# executed during container startup
+COPY ./sql-scripts/ /docker-entrypoint-initdb.d/
+
+EXPOSE 3306
+
+
+
+# BUILD INSTRUCTIONS
+#
+# ***MAKE SURE TO STOP/REMOVE ALL CONTAINERS AND VOLUMES***
+# docker stop [container name]
+# docker rm [container name]
+# docker volume prune
+#
+# ***RUN COMMAND BELOW WITHIN ./10_MYSQL DIRECTORY*** 
+# docker build -t mysql_image .
+#
+# ***COMMAND TO START CONTAINER BASED ON IMAGE CREATED BY THIS DOCKERFILE***
+# docker run -d --name mysqlContainer -v mysqlContainerNamedVolume:/var/lib/mysql -e MYSQL_USER=root -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=test -p 3307:3306 mysql_image
